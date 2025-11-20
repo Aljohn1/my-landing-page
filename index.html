@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DrivU — Drive Smart. Drive Safe.</title>
+  <link rel="stylesheet" href="index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HEADER / NAVIGATION -->
+  <header class="navbar">
+    <div class="logo">DrivU</div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="navMenu" class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#download">Download</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#demo">Demo</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="themeToggle">🌙</button>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Drive Smart. Drive Safe.</h1>
+      <p>AI-powered drowsiness detection for safer roads.</p>
+
+      <!-- Download Display -->
+      <div class="download-display">
+        <div class="download-btn">⬇️</div>
+        <div class="download-info">
+          <span id="downloadCount">0</span>
+          <span>Downloads</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="./assets/scanning.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- DEMO SECTION -->
+  <section id="demo" class="demo">
+    <h2>See DrivU in Action</h2>
+    <p>Check out how our app helps drivers stay alert and safe.</p>
+    <div class="demo-images">
+      <img src="./assets/image1.jpg" alt="Demo 1">
+      <img src="./assets/image2.jpg" alt="Demo 2">
+      <img src="./assets/image3.jpg" alt="Demo 3">
+      <img src="./assets/image4.jpg" alt="Demo 4">
+    </div>
+  </section>
+
+  <!-- DOWNLOAD SECTION -->
+  <section id="download" class="download">
+    <h2>Download DrivU</h2>
+    <p>Get the latest version for your device.</p>
+
+    <!-- Download Button -->
+    <button class="apk-btn" id="downloadApk">📱 Download APK</button>
+
+    <div class="sys-req">
+      <h3>System Requirements</h3>
+      <ul>
+        <li>Android 10.0 or higher</li>
+        <li>Camera access required</li>
+        <li>2GB RAM minimum</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about">
+    <h2>About DrivU</h2>
+    <p><b>DrivU</b> is an AI-powered driver monitoring system that detects drowsiness in real time. Our mission is to make roads safer for everyone by using cutting-edge technology to enhance driver awareness.</p>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features">
+    <h2>Key Features</h2>
+    <div class="feature-grid">
+      <div class="feature"><b>👁️ Real-time Detection</b><p>Advanced AI monitors eyes and face for fatigue.</p></div>
+      <div class="feature"><b>🔊 Alarm Alerts</b><p>Non-intrusive alerts to keep drivers awake.</p></div>
+      <div class="feature"><b>💡 Driving Tips</b><p>Get personalized tips for safer driving.</p></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="footer">
+    <p>📧 drivusupport@gmail.com</p>
+    <p>DrivU v1.2.3 © 2025</p>
+  </footer>
+
+  <!-- Inline Script -->
+  <script>
+    // ===== APK Download Handler =====
+    const downloadBtn = document.getElementById('downloadApk');
+    const downloadCount = document.getElementById('downloadCount');
+    let count = 0;
+
+    downloadBtn.addEventListener('click', () => {
+      // Create temporary link for download
+      const link = document.createElement('a');
+      link.href = 'apk_files/drivu.zip'; // path to your ZIP
+      link.download = 'drivu.zip';         // suggested filename for user
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Increment front-end counter
+      count++;
+      downloadCount.textContent = count;
+
+      // Show temporary feedback on button
+      downloadBtn.textContent = "✅ Download Started!";
+      setTimeout(() => {
+        downloadBtn.textContent = "📱 Download APK";
+      }, 2000);
+    });
+
+    // ===== Mobile menu toggle =====
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
